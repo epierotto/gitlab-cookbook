@@ -25,8 +25,14 @@ Vagrant.configure('2') do |config|
     guest.vm.provision :chef_solo do |chef|
       chef.json = {
         "gitlab" => {
-          "url" => "http://172.16.38.12"
-        } 
+          "url" => "http://172.16.38.12",
+	  "database_adapter" => "postgresql"
+        },
+        "postgresql": {
+	  "password": {
+	  "postgres": "psqlpass"
+	  }
+	}
       }
       chef.run_list = [
 	"recipe[redisio]",
