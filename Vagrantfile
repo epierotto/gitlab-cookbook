@@ -28,9 +28,9 @@ Vagrant.configure('2') do |config|
           "url" => "http://172.16.38.12",
 	  "database_adapter" => "postgresql"
         },
-        "postgresql": {
-	  "password": {
-	  "postgres": "psqlpass"
+        "postgresql" => {
+	  "password" => {
+	  "postgres" => "psqlpass"
 	  }
 	}
       }
