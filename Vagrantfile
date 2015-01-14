@@ -15,6 +15,12 @@ Vagrant.configure('2') do |config|
   
   config.vm.hostname = "gitlab"
   
+  # Give it some power...
+  config.vm.provider :virtualbox do |vb|
+      vb.customize ['modifyvm', :id,
+                        '--cpus', '2',
+                        '--memory', '1024',]
+  end
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
