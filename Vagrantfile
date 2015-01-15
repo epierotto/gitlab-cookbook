@@ -32,16 +32,21 @@ Vagrant.configure('2') do |config|
       chef.json = {
         "gitlab" => {
           "url" => "http://172.16.38.12",
-	  "database_adapter" => "postgresql"
+	  "database_adapter" => "mysql"
         },
-        "postgresql" => {
-	  "password" => {
-	  "postgres" => "psqlpass"
-	  }
+	"mysql" => {
+	  "server_root_password" => "password",
+	  "server_repl_password" => "password",
 	}
+#        "postgresql" => {
+#	  "password" => {
+#	  "postgres" => "psqlpass"
+#	  }
+#	}
       }
       chef.run_list = [
 	"recipe[redisio]",
+	"recipe[gitlab::redis]",
         "recipe[gitlab]"
         ]
     end
